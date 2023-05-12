@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=admin
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=admin
+      - MYSQL_ROOT_HOST=%
+    ports:
+      - '3306:3306'
+    command: --default-authentication-plugin=mysql_native_password
+
+  postgresql:
+    image: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_PASSWORD: 'admin'
+      POSTGRES_USER: 'admin'
+  app:
+    build: .
+    container_name: mercafacil-backend-integration
+    ports:
+      - 4444:4444
+      - 9229:9229
+    volumes:
+      - .:/usr/app
+    links:
+      - mysql
+      - postgresql
+    depends_on:
+      - mysql
+      - postgresql
+
+volumes:
+  pgdata:
+    driver: local
