@@ -5,6 +5,7 @@ import { CreateContactUseCase } from './CreateContactUseCase';
 class CreateContactController {
   async handle(request: Request, response: Response) {
     try {
+      const { client } = request;
       const { contacts } = request.body;
       const createContactUseCase = container.resolve(CreateContactUseCase);
 
@@ -16,7 +17,7 @@ class CreateContactController {
         await createContactUseCase.execute(contact, null);
       }
 
-      return response.status(201).send();
+      return response.status(201).json(client);
     } catch (err) {
       return response.status(500).json({ error: err.message });
     }
