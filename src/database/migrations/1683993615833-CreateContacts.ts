@@ -12,7 +12,7 @@ export class CreateContacts1683993615833 implements MigrationInterface {
             isPrimary: true,
           },
           {
-            name: 'name',
+            name: 'nome',
             type: 'varchar',
             isNullable: false,
           },
@@ -21,6 +21,11 @@ export class CreateContacts1683993615833 implements MigrationInterface {
             name: 'celular',
             type: 'varchar',
             isNullable: false,
+          },
+          {
+            name: 'created_at',
+            type: 'timestamp',
+            default: 'now()',
           },
         ],
       })

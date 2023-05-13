@@ -6,10 +6,18 @@ import { ICreateContactDTO } from '../../dtos/ICreateContactDTO';
 class CreateContactUseCase {
   constructor(
     @inject('ContactRepositoryPostgres')
-    private contactRepositories: IContactRepositories
+    private contactRepository: IContactRepositories
   ) {}
 
-  async execute({ name, cellphone }: ICreateContactDTO): Promise<void> {}
+  async execute({ name, cellphone }: ICreateContactDTO): Promise<void> {
+    const contactAlreadyExists = await this.contactRepository.findByCellphone(
+      cellphone
+    );
+
+    if (!contactAlreadyExists) {
+      await this.contactRepository.create({ name, cellphone });
+    }
+  }
 }
 
 export { CreateContactUseCase };

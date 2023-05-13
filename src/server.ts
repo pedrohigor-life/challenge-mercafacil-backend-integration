@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import * as dotenv from 'dotenv';
 import express from 'express';
 import { routes } from './modules/routes/index.routes';
@@ -7,12 +8,22 @@ import { routes } from './modules/routes/index.routes';
 dotenv.config();
 
 /**
+ * Database
+ */
+import './database';
+
+/**
  * Express
  */
 const server = express();
 
 server.use(express.json());
 server.use(routes);
+
+/**
+ * Container tSyringe
+ */
+import './shared/container';
 
 /**
  * Server instance

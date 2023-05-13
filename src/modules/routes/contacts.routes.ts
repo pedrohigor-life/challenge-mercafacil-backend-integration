@@ -1,7 +1,10 @@
 import { Router } from 'express';
+import { CreateContactController } from '../contacts/useCases/createContact/CreateContactController';
 
 const contactsRoutes = Router();
 
-contactsRoutes.post('/');
+const createContactController = new CreateContactController();
+
+contactsRoutes.post('/', createContactController.handle);
 
 export { contactsRoutes };

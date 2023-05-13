@@ -7,16 +7,16 @@ class Contact {
   id?: string;
 
   @Column()
-  name: string;
+  nome: string;
 
   @Column()
-  cellphone: string;
+  celular: string;
 
   @CreateDateColumn()
   created_at: Date;
 
   constructor() {
-    if (!this.id) this.id == uuidv4();
+    if (!this.id) this.id = uuidv4();
   }
 }
 
