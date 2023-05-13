@@ -14,8 +14,13 @@ class ClientRepository implements IClientRepository {
     return this.repository.findOne({ id });
   }
 
-  async findByUser(email: string): Promise<Client> {
-    return this.repository.findOne({ email });
+  async findByClient(email: string, client: string): Promise<Client> {
+    return this.repository.findOne({
+      where: {
+        email,
+        client,
+      },
+    });
   }
 
   async create({ email, password, client }: ICreateClientDTO): Promise<void> {
