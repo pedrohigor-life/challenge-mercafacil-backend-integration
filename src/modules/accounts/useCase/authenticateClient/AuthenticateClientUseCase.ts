@@ -33,15 +33,15 @@ class AuthenticateClientUseCase {
 
     if (!passwordMatch) throw new Error('Email or Password incorrect!');
 
-    const token = sign({}, '75f646a9404a88b5eb590853776ac17b', {
+    const token = sign({}, process.env.SECRET_KEY_JWT, {
       subject: client.id,
       expiresIn: '1d',
     });
 
     const tokenReturn: IResponse = {
       client: {
-        client: client.client,
         email: client.email,
+        client: client.client,
       },
       token,
     };
