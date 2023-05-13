@@ -20,7 +20,7 @@ services:
     environment:
       POSTGRES_PASSWORD: 'admin'
       POSTGRES_USER: 'admin'
-      POSTGRES_DB: mercafacil-varejao
+      POSTGRES_DB: 'mercafacil-varejao'
   app:
     build: .
     container_name: mercafacil-backend-integration
