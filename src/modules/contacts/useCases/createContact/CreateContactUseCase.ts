@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 import { IContactRepositories } from '../../repositories/IContactRepositories';
 import { ICreateContactDTO } from '../../dtos/ICreateContactDTO';
-import { Contact } from '../../entities/Contact';
+import { IContactDTO } from '../../dtos/IContactDTO';
 
 @injectable()
 class CreateContactUseCase {
@@ -11,14 +11,13 @@ class CreateContactUseCase {
   ) {}
 
   async execute(
-    onlyContact?: ICreateContactDTO,
-    contacts?: Contact[]
+    onlyContact: ICreateContactDTO | null,
+    contacts: IContactDTO[]
   ): Promise<void> {
     if (onlyContact) {
       const contactAlreadyExists = await this.contactRepository.findByCellphone(
         onlyContact.cellphone
       );
-
       if (!contactAlreadyExists) {
         await this.contactRepository.create({
           name: onlyContact.name,
@@ -26,6 +25,14 @@ class CreateContactUseCase {
         });
       }
     }
+
+    contacts.map(async (contact) => {
+      const contactAlreadyExists = await this.contactRepository.findByCellphone(
+        contact.cellphone
+      );
+
+      console.log(contactAlreadyExists);
+    });
   }
 }
 

@@ -5,16 +5,16 @@ import { CreateContactUseCase } from './CreateContactUseCase';
 class CreateContactController {
   async handle(request: Request, response: Response) {
     try {
-      const contacts = request.body.contacts;
+      const { contacts } = request.body;
 
       const createContactUseCase = container.resolve(CreateContactUseCase);
 
-      // createContactUseCase.execute(contacts);
+      createContactUseCase.execute(null, contacts);
 
       if (!contacts) {
-        const { name, cellphone } = request.body;
+        const contact = request.body;
 
-        await createContactUseCase.execute({ name, cellphone });
+        await createContactUseCase.execute(contact, null);
       }
 
       return response.status(201).send();

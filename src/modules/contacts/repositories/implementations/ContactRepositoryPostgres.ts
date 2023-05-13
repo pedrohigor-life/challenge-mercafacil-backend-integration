@@ -2,6 +2,7 @@ import { Repository, getRepository } from 'typeorm';
 import { ICreateContactDTO } from '../../dtos/ICreateContactDTO';
 import { Contact } from '../../entities/Contact';
 import { IContactRepositories } from '../IContactRepositories';
+import { IContactDTO } from '../../dtos/IContactDTO';
 
 class ContactRepositoryPostgres implements IContactRepositories {
   private repository: Repository<Contact>;
@@ -11,6 +12,7 @@ class ContactRepositoryPostgres implements IContactRepositories {
   }
 
   findByCellphone(cellphone: string): Promise<Contact> {
+    console.log(cellphone);
     return this.repository.findOne({
       where: {
         celular: cellphone,
@@ -20,7 +22,7 @@ class ContactRepositoryPostgres implements IContactRepositories {
 
   async create(
     onlyContact?: ICreateContactDTO,
-    contacts?: Contact[]
+    contacts?: IContactDTO[]
   ): Promise<void> {
     if (onlyContact) {
       const contact = this.repository.create({
