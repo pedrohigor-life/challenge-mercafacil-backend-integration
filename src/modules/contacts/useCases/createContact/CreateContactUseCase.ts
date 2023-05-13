@@ -14,7 +14,7 @@ class CreateContactUseCase {
     onlyContact: ICreateContactDTO | null,
     contacts: IContactDTO[]
   ): Promise<void> {
-    if (onlyContact) {
+    if (!contacts) {
       const contactAlreadyExists = await this.contactRepository.findByCellphone(
         onlyContact.cellphone
       );
@@ -24,15 +24,20 @@ class CreateContactUseCase {
           cellphone: onlyContact.cellphone,
         });
       }
+    } else {
+      contacts.map(async (contact) => {
+        const contacts: IContactDTO[] = [];
+        const contactAlreadyExists =
+          await this.contactRepository.findByCellphone(contact.cellphone);
+
+        if (!contactAlreadyExists) contacts.push(contact);
+
+        await this.contactRepository.create({
+          name: contact.name,
+          cellphone: contact.cellphone,
+        });
+      });
     }
-
-    contacts.map(async (contact) => {
-      const contactAlreadyExists = await this.contactRepository.findByCellphone(
-        contact.cellphone
-      );
-
-      console.log(contactAlreadyExists);
-    });
   }
 }
 

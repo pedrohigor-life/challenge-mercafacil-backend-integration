@@ -3,7 +3,7 @@ import { ICreateContactDTO } from '../dtos/ICreateContactDTO';
 import { Contact } from '../entities/Contact';
 
 interface IContactRepositories {
-  create(contact?: ICreateContactDTO, contacts?: IContactDTO[]): Promise<void>;
+  create({ name, cellphone }: IContactDTO): Promise<void>;
   findByCellphone(cellphone: string): Promise<Contact>;
 }
 

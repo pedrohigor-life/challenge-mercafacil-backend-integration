@@ -12,7 +12,6 @@ class ContactRepositoryPostgres implements IContactRepositories {
   }
 
   findByCellphone(cellphone: string): Promise<Contact> {
-    console.log(cellphone);
     return this.repository.findOne({
       where: {
         celular: cellphone,
@@ -20,18 +19,13 @@ class ContactRepositoryPostgres implements IContactRepositories {
     });
   }
 
-  async create(
-    onlyContact?: ICreateContactDTO,
-    contacts?: IContactDTO[]
-  ): Promise<void> {
-    if (onlyContact) {
-      const contact = this.repository.create({
-        nome: onlyContact.name,
-        celular: onlyContact.cellphone,
-      });
+  async create({ name, cellphone }: IContactDTO): Promise<void> {
+    const contact = this.repository.create({
+      nome: name,
+      celular: cellphone,
+    });
 
-      this.repository.save(contact);
-    }
+    this.repository.save(contact);
   }
 }
 
