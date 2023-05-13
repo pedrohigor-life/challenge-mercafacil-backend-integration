@@ -7,7 +7,7 @@ export type NameClient = 'macapa' | 'varejao';
 @Entity('clients')
 class Client {
   @PrimaryColumn()
-  id: string;
+  id?: string;
 
   @Column()
   email: string;
