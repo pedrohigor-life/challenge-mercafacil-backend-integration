@@ -18,17 +18,18 @@ class ContactRepositoryPostgres implements IContactRepositories {
     });
   }
 
-  async create({ name, cellphone }: ICreateContactDTO): Promise<void> {
-    const contact = new Contact();
+  async create(
+    onlyContact?: ICreateContactDTO,
+    contacts?: Contact[]
+  ): Promise<void> {
+    if (onlyContact) {
+      const contact = this.repository.create({
+        nome: onlyContact.name,
+        celular: onlyContact.cellphone,
+      });
 
-    Object.assign(contact, {
-      nome: name,
-      celular: cellphone,
-    });
-
-    const contactObject = this.repository.create(contact);
-
-    await this.repository.save(contactObject);
+      this.repository.save(contact);
+    }
   }
 }
 
