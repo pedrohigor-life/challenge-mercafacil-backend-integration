@@ -1,8 +1,8 @@
 import { Client } from '../../entities/postgres/Cliente';
 import { IClientRepository } from '../IClientRepository';
 import { ICreateClientDTO } from '../../dtos/ICreateClientDTO';
-import { PostgresDataSource } from '../../../../database/datasource.config';
 import { Repository } from 'typeorm';
+import { PostgresDataSource } from '../../../../database/datasources/PostgresDataSource';
 
 class ClientRepository implements IClientRepository {
   private repository: Repository<Client>;

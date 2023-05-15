@@ -2,7 +2,7 @@ import { Repository } from 'typeorm';
 import { Contact } from '../../entities/postgres/Contact';
 import { IContactRepositories } from '../IContactRepositories';
 import { IContactDTO } from '../../dtos/IContactDTO';
-import { PostgresDataSource } from '../../../../database/datasource.config';
+import { PostgresDataSource } from '../../../../database/datasources/PostgresDataSource';
 
 class ContactRepositoryPostgres implements IContactRepositories {
   private repository: Repository<Contact>;
