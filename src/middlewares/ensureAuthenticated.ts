@@ -14,7 +14,7 @@ export async function ensureAuthenticated(
   try {
     const authHeader = request.headers.authorization;
 
-    if (!authHeader) throw new Error('Token missing');
+    if (!authHeader) throw new Error('Você precisa de uma token válido');
 
     const [, token] = authHeader.split(' ');
 
@@ -28,7 +28,7 @@ export async function ensureAuthenticated(
 
       const clientExists = await clientRepository.findById(client_id);
 
-      if (!clientExists) throw new Error('User does not exists');
+      if (!clientExists) throw new Error('Usuário não existe');
 
       request.client = {
         id: client_id,
@@ -37,7 +37,7 @@ export async function ensureAuthenticated(
 
       next();
     } catch (error) {
-      throw new Error('Invalid token');
+      throw new Error('Token inválido');
     }
   } catch (error) {
     return response.status(500).json({ error: error.message });
