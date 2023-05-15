@@ -1,3 +1,4 @@
-import { PostgresDataSource } from './datasource.config';
+import { MySQLDataSource, PostgresDataSource } from './datasource.config';
 
 PostgresDataSource.initialize();
+MySQLDataSource.initialize();

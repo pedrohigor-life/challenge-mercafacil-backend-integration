@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export type NameClient = 'macapa' | 'varejao';
 
-@Entity({ name: 'clients', database: 'mercafacil-varejao' })
+@Entity()
 class Client {
   @PrimaryColumn()
   id?: string;
