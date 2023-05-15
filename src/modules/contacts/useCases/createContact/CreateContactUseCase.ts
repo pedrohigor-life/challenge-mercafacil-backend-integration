@@ -25,7 +25,7 @@ class CreateContactUseCase {
         if (!contactAlreadyExists) {
           await this.contactRepositoryPostgres.create({
             name: contact.name,
-            cellphone: contact.cellphone,
+            cellphone: contact.cellphone.replace(/[^0-9]/g, ''),
           });
         }
       });
@@ -33,16 +33,20 @@ class CreateContactUseCase {
       contacts.map(async (contact) => {
         const contactAlreadyExists =
           await this.contactRepositoryMySQL.findByCellphone(contact.cellphone);
-
         if (!contactAlreadyExists) {
           await this.contactRepositoryMySQL.create({
             name: contact.name,
-            cellphone: contact.cellphone,
+            cellphone: contact.cellphone.replace(
+              /(\d{2})?(\d{2})?(\d{5})?(\d{2})/,
+              '+$1 ($2) $3-$4'
+            ),
           });
         }
       });
     }
   }
 }
+
+// +55 (41) 93030-6905
 
 export { CreateContactUseCase };

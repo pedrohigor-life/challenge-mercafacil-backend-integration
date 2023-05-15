@@ -18,7 +18,7 @@ class ContactRepositoryMySQL implements IContactRepositories {
   async create({ name, cellphone }: IContactDTO): Promise<void> {
     const contact = this.repository.create({
       nome: name,
-      celular: cellphone.replace(/[^0-9]/g, ''),
+      celular: cellphone,
     });
 
     this.repository.save(contact);
