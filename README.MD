@@ -107,7 +107,7 @@ mas caso, seja da sua vontade alterar, é só alterar a variável de ambiente (S
 
 ### Caso você prefira realizar os testes via Insomnia, é só realizar a importação do arquivo:
 
-- **[Insomnia](https://nodejs.org/en)**
+- **[Insomnia](https://github.com/pedrohigor-life/challenge-mercafacil-backend-integration/blob/dev/tmp/Insomnia_2023-05-15.json)**
 
 <!-- ### ⌨️ E testes de estilo de codificação
 
