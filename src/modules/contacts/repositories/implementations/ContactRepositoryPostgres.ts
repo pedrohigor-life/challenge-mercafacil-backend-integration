@@ -1,22 +1,18 @@
-import { Repository, getRepository } from 'typeorm';
-import { ICreateContactDTO } from '../../dtos/ICreateContactDTO';
+import { Repository } from 'typeorm';
 import { Contact } from '../../entities/postgres/Contact';
 import { IContactRepositories } from '../IContactRepositories';
 import { IContactDTO } from '../../dtos/IContactDTO';
+import { PostgresDataSource } from '../../../../database/datasource.config';
 
 class ContactRepositoryPostgres implements IContactRepositories {
   private repository: Repository<Contact>;
 
   constructor() {
-    this.repository = getRepository(Contact);
+    this.repository = PostgresDataSource.getRepository(Contact);
   }
 
-  findByCellphone(cellphone: string): Promise<Contact> {
-    return this.repository.findOne({
-      where: {
-        celular: cellphone,
-      },
-    });
+  async findByCellphone(cellphone: string): Promise<Contact> {
+    return await this.repository.findOneBy({ celular: cellphone });
   }
 
   async create({ name, cellphone }: IContactDTO): Promise<void> {
