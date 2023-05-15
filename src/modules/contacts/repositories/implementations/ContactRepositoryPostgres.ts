@@ -1,6 +1,6 @@
 import { Repository, getRepository } from 'typeorm';
 import { ICreateContactDTO } from '../../dtos/ICreateContactDTO';
-import { Contact } from '../../entities/Contact';
+import { Contact } from '../../entities/postgres/Contact';
 import { IContactRepositories } from '../IContactRepositories';
 import { IContactDTO } from '../../dtos/IContactDTO';
 

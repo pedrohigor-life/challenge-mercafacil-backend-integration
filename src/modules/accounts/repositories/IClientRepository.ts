@@ -1,5 +1,5 @@
 import { ICreateClientDTO } from '../dtos/ICreateClientDTO';
-import { Client } from '../entities/Cliente';
+import { Client } from '../entities/postgres/Cliente';
 
 interface IClientRepository {
   findByClient(email: string): Promise<Client>;

@@ -1,5 +1,5 @@
 import { Repository, getRepository } from 'typeorm';
-import { Client } from '../../entities/Cliente';
+import { Client } from '../../entities/postgres/Cliente';
 import { IClientRepository } from '../IClientRepository';
 import { ICreateClientDTO } from '../../dtos/ICreateClientDTO';
 
