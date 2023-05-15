@@ -68,9 +68,10 @@ rapidamente, um banco de dado pelo outro, sem sérias modificações na aplicaç
 
 Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar o projeto.
 
-### 📋 Pré-requisitos
+### 📋 Pré-requisitos obrigatórios
 
-De que coisas você precisa para instalar o software e como instalá-lo?
+- Node.JS
+- **[Docker](https://docs.docker.com/desktop/)** e **[Docker Compose](https://docs.docker.com/compose/)**
 
 ```
 Dar exemplos
