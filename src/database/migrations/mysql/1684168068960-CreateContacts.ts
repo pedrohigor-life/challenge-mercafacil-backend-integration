@@ -3,7 +3,7 @@ import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 export class CreateContacts1684168068960 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     new Table({
-      name: 'clients',
+      name: 'contacts',
       columns: [
         {
           name: 'id',
