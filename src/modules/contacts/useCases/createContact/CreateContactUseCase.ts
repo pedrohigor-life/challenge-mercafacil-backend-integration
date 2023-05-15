@@ -1,6 +1,5 @@
 import { inject, injectable } from 'tsyringe';
 import { IContactRepositories } from '../../repositories/IContactRepositories';
-import { ICreateContactDTO } from '../../dtos/ICreateContactDTO';
 import { IContactDTO } from '../../dtos/IContactDTO';
 
 @injectable()
@@ -11,7 +10,7 @@ class CreateContactUseCase {
   ) {}
 
   async execute(
-    onlyContact: ICreateContactDTO | null,
+    onlyContact: IContactDTO | null,
     contacts: IContactDTO[]
   ): Promise<void> {
     if (!contacts) {
