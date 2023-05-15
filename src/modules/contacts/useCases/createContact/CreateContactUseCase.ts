@@ -47,6 +47,4 @@ class CreateContactUseCase {
   }
 }
 
-// +55 (41) 93030-6905
-
 export { CreateContactUseCase };
