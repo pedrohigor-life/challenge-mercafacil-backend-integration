@@ -70,44 +70,46 @@ Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar 
 
 ### 📋 Pré-requisitos obrigatórios
 
-- Node.JS
+- **[Node.js](https://nodejs.org/en)**
 - **[Docker](https://docs.docker.com/desktop/)** e **[Docker Compose](https://docs.docker.com/compose/)**
-
-```
-Dar exemplos
-```
+- **[Git](https://git-scm.com/)**
+- **[Yarn](https://yarnpkg.com/)**
 
 ### 🔧 Instalação
 
-Uma série de exemplos passo-a-passo que informam o que você deve executar para ter um ambiente de desenvolvimento em execução.
+- Realize a instação do **[Node.js](https://nodejs.org/en)**
+- Realize a instação do **[Docker](https://docs.docker.com/desktop/)** e **[Docker Compose](https://docs.docker.com/compose/)**
 
-Diga como essa etapa será:
-
-```
-Dar exemplos
-```
-
-E repita:
+- Após a instalação dos itens a cima, realize o download da aplicação nas sua máquina
+- OBS: O exemplo a seguir, aborda somente o donwload da plicação via HTTP.
 
 ```
-Até finalizar
-```
-
-Termine com um exemplo de como obter dados do sistema ou como usá-los para uma pequena demonstração.
-
-## ⚙️ Executando os testes
-
-Explicar como executar os testes automatizados para este sistema.
-
-### 🔩 Analise os testes de ponta a ponta
-
-Explique que eles verificam esses testes e porquê.
+git clone https://github.com/pedrohigor-life/challenge-mercafacil-backend-integration.git
 
 ```
-Dar exemplos
+
+Navegue até a pasta onde você fez o download do código, e rode o seguinte comando, para a instalação das dependências:
+
+```
+yarn
 ```
 
-### ⌨️ E testes de estilo de codificação
+## ⚙️ Executando o projeto
+
+Após a conclusão de todos ositens a cima, você pode ir até a pasta do projeto, e executar o comando:
+
+```
+docker-compose up
+```
+
+Por padrão, o servidor será criado no endereço: http://localhost:4444
+mas caso, seja da sua vontade alterar, é só alterar a variável de ambiente (SERVER_PORT) no arquivo .env
+
+### Caso você prefira realizar os testes via Insomnia, é só realizar a importação do arquivo:
+
+- **[Insomnia](https://nodejs.org/en)**
+
+<!-- ### ⌨️ E testes de estilo de codificação
 
 Explique que eles verificam esses testes e porquê.
 
@@ -157,4 +159,4 @@ Este projeto está sob a licença (sua licença) - veja o arquivo [LICENSE.md](h
 
 ---
 
-⌨️ com ❤️ por [Armstrong Lohãns](https://gist.github.com/lohhans) 😊
+⌨️ com ❤️ por [Armstrong Lohãns](https://gist.github.com/lohhans) 😊 -->
