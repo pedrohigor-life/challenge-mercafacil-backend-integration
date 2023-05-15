@@ -96,10 +96,24 @@ yarn
 
 ## ⚙️ Executando o projeto
 
-Após a conclusão de todos ositens a cima, você pode ir até a pasta do projeto, e executar o comando:
+Execute o comando abaixo, para subir á aplicação junstamente com os bancos de dados:
 
 ```
 docker-compose up
+```
+
+### Migrations
+
+Um passo extremamente importante é você executar as migrations, para que seja possível realizar a operações com as Entidades da aplicação.
+
+Execute os comandos a baixo:
+
+- OBS: Não derrube os containers, abra um novo terminal.
+
+```
+- docker exec -it mercafacil-backend-integration sh -c "yarn typeorm migration:run -- -d ./src/database/datasources/PostgresDataSource.ts"
+
+- docker exec -it mercafacil-backend-integration sh -c "yarn typeorm migration:run -- -d ./src/database/datasources/MySQLDataSource.ts"
 ```
 
 Por padrão, o servidor será criado no endereço: http://localhost:4444

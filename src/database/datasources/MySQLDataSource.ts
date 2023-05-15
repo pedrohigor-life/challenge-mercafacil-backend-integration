@@ -2,7 +2,7 @@ import { DataSource } from 'typeorm';
 
 const MySQLDataSource = new DataSource({
   type: 'mysql',
-  host: 'localhost',
+  host: 'mysql',
   port: 3306,
   username: 'admin',
   password: 'admin',
