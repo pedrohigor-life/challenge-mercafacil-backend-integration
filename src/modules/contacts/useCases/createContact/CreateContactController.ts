@@ -7,17 +7,24 @@ class CreateContactController {
     try {
       const { client } = request;
       const { contacts } = request.body;
-      const createContactUseCase = container.resolve(CreateContactUseCase);
 
-      if (contacts) {
-        createContactUseCase.execute(null, contacts);
-      } else {
-        const contact = request.body;
+      if (client.client === 'varejao') {
+        const createContactUseCase = container.resolve(CreateContactUseCase);
 
-        await createContactUseCase.execute(contact, null);
+        if (contacts) {
+          createContactUseCase.execute(null, contacts);
+        } else {
+          const contact = request.body;
+
+          await createContactUseCase.execute(contact, null);
+        }
+
+        return response.status(201).send();
       }
 
-      return response.status(201).json(client);
+      return response.status(401).json({
+        message: 'Ainda não é possível importar contatos para este cliente',
+      });
     } catch (err) {
       return response.status(500).json({ error: err.message });
     }

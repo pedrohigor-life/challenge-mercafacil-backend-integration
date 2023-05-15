@@ -34,7 +34,7 @@ class CreateContactUseCase {
 
         await this.contactRepository.create({
           name: contact.name,
-          cellphone: contact.cellphone,
+          cellphone: contact.cellphone.replace(/[^0-9]/g, ''),
         });
       });
     }
