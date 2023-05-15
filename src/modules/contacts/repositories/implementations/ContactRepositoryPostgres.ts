@@ -18,7 +18,7 @@ class ContactRepositoryPostgres implements IContactRepositories {
   async create({ name, cellphone }: IContactDTO): Promise<void> {
     const contact = this.repository.create({
       nome: name,
-      celular: cellphone,
+      celular: cellphone.replace(/[^0-9]/g, ''),
     });
 
     this.repository.save(contact);
