@@ -1,21 +1,24 @@
-import { Repository, getRepository } from 'typeorm';
 import { Client } from '../../entities/postgres/Cliente';
 import { IClientRepository } from '../IClientRepository';
 import { ICreateClientDTO } from '../../dtos/ICreateClientDTO';
+import { PostgresDataSource } from '../../../../database/datasource.config';
+import { Repository } from 'typeorm';
 
 class ClientRepository implements IClientRepository {
   private repository: Repository<Client>;
 
   constructor() {
-    this.repository = getRepository(Client);
+    this.repository = PostgresDataSource.getRepository(Client);
   }
 
   async findById(id: string): Promise<Client> {
-    return this.repository.findOne({ id });
+    return await this.repository.findOneBy({
+      id,
+    });
   }
 
   async findByClient(email: string): Promise<Client> {
-    return this.repository.findOne({ email });
+    return await this.repository.findOneBy({ email });
   }
 
   async create({ email, password, client }: ICreateClientDTO): Promise<void> {

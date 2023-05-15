@@ -1,6 +1,15 @@
 version: '3'
 
 services:
+  postgresql:
+    image: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_PASSWORD: 'admin'
+      POSTGRES_USER: 'admin'
+      POSTGRES_DB: 'mercafacil-varejao'
+
   mysql:
     image: mysql
     environment:
@@ -14,15 +23,6 @@ services:
     volumes:
       - my-db:/var/lib/mysql
     command: --default-authentication-plugin=mysql_native_password
-
-  postgresql:
-    image: postgres
-    ports:
-      - '5432:5432'
-    environment:
-      POSTGRES_PASSWORD: 'admin'
-      POSTGRES_USER: 'admin'
-      POSTGRES_DB: 'mercafacil-varejao'
 
   app:
     build: .
