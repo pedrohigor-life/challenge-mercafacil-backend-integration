@@ -119,6 +119,12 @@ Execute os comandos a baixo:
 Por padrão, o servidor será criado no endereço: http://localhost:4444
 mas caso, seja da sua vontade alterar, é só alterar a variável de ambiente (SERVER_PORT) no arquivo .env
 
+### Como testar via Swagger
+
+Com á aplicação em execução, você deve acessar a rota: /api-docs
+
+OBS: É de extrema importância que seja criado os usuários dos clientes primeiro, e depois realizar a autenticação na rota "/sessions", para que você se autentique e realize a construção. Após isos é só utilizar io Swagger normalmente.
+
 ### Caso você prefira realizar os testes via Insomnia, é só realizar a importação do arquivo:
 
 - **[Insomnia](https://github.com/pedrohigor-life/challenge-mercafacil-backend-integration/blob/dev/tmp)**
