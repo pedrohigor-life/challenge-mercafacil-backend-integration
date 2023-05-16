@@ -1,4 +1,4 @@
-# Desafio Técnico - Processo Seletivo Backend Mercafácil
+# Desafio Técnico - Processo Seletivo Backend Mercafácil (v1.0.0.)
 
 O objetivo deste backe-end, é resolver o desafio técnico enviado pela empresa Mercafácil, a fim de simular uma possível integração entre sistemas na importação de contatos.
 
