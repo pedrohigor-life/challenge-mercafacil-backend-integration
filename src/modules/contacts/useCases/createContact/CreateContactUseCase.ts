@@ -24,8 +24,8 @@ class CreateContactUseCase {
 
         if (!contactAlreadyExists) {
           await this.contactRepositoryPostgres.create({
-            name: contact.name,
-            cellphone: contact.cellphone.replace(/[^0-9]/g, ''),
+            name: String(contact.name),
+            cellphone: String(contact.cellphone).replace(/[^0-9]/g, ''),
           });
         }
       });
@@ -35,8 +35,8 @@ class CreateContactUseCase {
           await this.contactRepositoryMySQL.findByCellphone(contact.cellphone);
         if (!contactAlreadyExists) {
           await this.contactRepositoryMySQL.create({
-            name: contact.name,
-            cellphone: contact.cellphone.replace(
+            name: contact.name.toString(),
+            cellphone: String(contact.cellphone).replace(
               /(\d{2})?(\d{2})?(\d{5})?(\d{2})/,
               '+$1 ($2) $3-$4'
             ),

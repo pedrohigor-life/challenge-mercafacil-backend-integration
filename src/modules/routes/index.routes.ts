@@ -11,6 +11,6 @@ const routes = Router();
 
 routes.use('/contacts', contactsRoutes);
 routes.use('/clients', clientsRoutes);
-routes.use('/session', authenticateRoutes);
+routes.use('/sessions', authenticateRoutes);
 
 export { routes };

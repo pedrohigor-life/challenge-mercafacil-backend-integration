@@ -1,0 +1,141 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Desafio Técnico - Processo Seletivo Backend Mercafácil (v1.0.0.)",
+    "description": "API de integração de contatos por cliente",
+    "version": "1.0.0",
+    "contact": {
+      "email": "pedrohigor.dev@gmail.com"
+    }
+  },
+  "paths": {
+    "/clients": {
+      "post": {
+        "tags": ["Clients"],
+        "summary": "Cadastrar um novo cliente",
+        "description": "Realiza o cadastro de um novo cliente, para autenticação na API",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "client": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "email": "varejao@gmail.com",
+                  "password": "12345678",
+                  "client": "varejao"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/sessions": {
+      "post": {
+        "tags": ["Sessions"],
+        "description": "Autenticação do usuário",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "email": "varejao@gmail.com",
+                  "password": "12345678"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Email or password incorrect!"
+          }
+        }
+      }
+    },
+    "/contacts": {
+      "post": {
+        "tags": ["Contacts"],
+        "description": "Inserção de contatos",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "contacts": {
+                    "contacts": [
+                      {
+                        "name": "string",
+                        "cellphone": "string"
+                      }
+                    ]
+                  }
+                },
+                "example": {
+                  "contacts": [
+                    {
+                      "name": "Srta. Ana Júlia Ramos",
+                      "cellphone": "5541968425283"
+                    },
+                    {
+                      "name": "Isis Cunha",
+                      "cellphone": "5541990355873"
+                    },
+                    {
+                      "name": "Maria Luiza Nunes",
+                      "cellphone": "5541991004754"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
